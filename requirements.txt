@@ -1,0 +1,7 @@
+pillow
+jpype
+numpy
+skimage
+matplotlib
+pandas
+opencv-python
