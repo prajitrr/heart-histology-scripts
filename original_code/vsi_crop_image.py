@@ -4,6 +4,7 @@ from PIL import Image, ImageOps
 import jpype
 import jpype.imports
 from jpype.types import *
+import time
 
 # Define the functions
 def normalize_image(image):
@@ -50,21 +51,24 @@ def is_mostly_green_or_blue(image, threshold=100, color_ratio=0.5):
     return ratio > color_ratio
 
 # Path to the Bio-Formats JAR file
-bioformats_jar = "/Users/zhangbo/Desktop/Image_processing codes/ML_data_procesing/In progress codes/bioformats_package.jar"  # Update this path to your actual location
+bioformats_jar = "../bioformats_package.jar"  # Update this path to your actual location
 
 # Check if the JAR file exists
 if not os.path.isfile(bioformats_jar):
     raise FileNotFoundError(f"Bio-Formats JAR file not found at {bioformats_jar}")
 
+
+start = time.process_time()
 jpype.startJVM(classpath=[bioformats_jar])
+
 
 # Import Java packages
 import loci.formats.ImageReader
 import loci.formats.MetadataTools
 
 # Initialize the reader
-vsi_file = "/Volumes/LaBo/Amyloid Histology 01_29/A18_00063A5.vsi"  # Update this path to your actual image location
-output_root_folder = "/Volumes/LaBo/Test_Folder/filtered_448_to_224_tiless_amyloid"
+vsi_file = "../sample_vsi/Image_A-22-00025A4-1.vsi"  # Update this path to your actual image location
+output_root_folder = "../python_test_output"
 reader = loci.formats.ImageReader()
 reader.setId(vsi_file)
 
@@ -154,3 +158,5 @@ for x in range(x_start, x_end, tile_width):
             tile_path = os.path.join(vsi_output_folder, tile_name)
             img_normalized.save(tile_path)
             print(f"Tile saved: {tile_path}")
+
+print(f"Processing time: {time.process_time() - start} seconds")

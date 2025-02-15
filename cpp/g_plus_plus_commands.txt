@@ -1,0 +1,3 @@
+g++ -I/usr/local/include/opencv4 -I/usr/lib/jvm/java-21-openjdk-amd64/include -I/usr/lib/jvm/java-21-openjdk-amd64/include/linux -L/usr/lib/jvm/java-21-openjdk-amd64/lib -L/usr/lib/jvm/java-21-openjdk-amd64/lib/server vsi_crop_image.cpp -lopencv_core -lopencv_videoio -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs -ljvm
+
+g++ -I/usr/local/include/opencv4 -I/usr/lib/jvm/java-21-openjdk-amd64/include -I/usr/lib/jvm/java-21-openjdk-amd64/include/linux -L/usr/lib/jvm/java-21-openjdk-amd64/lib -L/usr/lib/jvm/java-21-openjdk-amd64/lib/server parallel_vsi_crop_image.cpp -lopencv_core -lopencv_videoio -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs -ljvm

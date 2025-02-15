@@ -175,3 +175,8 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+sample_vsi/
+python_test_output/
+ets/
+ets_output/
